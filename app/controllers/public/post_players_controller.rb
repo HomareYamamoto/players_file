@@ -1,5 +1,9 @@
 class Public::PostPlayersController < ApplicationController
+
   def new
+  end
+
+  def create
   end
 
   def index
@@ -10,4 +14,11 @@ class Public::PostPlayersController < ApplicationController
 
   def edit
   end
+
+  def update
+  end
+
+  def destroy
+  end
+
 end

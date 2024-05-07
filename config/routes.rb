@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'homes/about'
     get "search" => "searches#search"
+
     resources :post_players, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
@@ -34,29 +35,18 @@ Rails.application.routes.draw do
 
 
 
-
-
-
-
-
-
   namespace :admin do
     get '/' => 'homes#top'
-  end
+    get "search" => "searches#search"
 
-  namespace :admin do
-    get 'nationalites/index'
-    get 'nationalites/edit'
-  end
-  namespace :admin do
-    get 'post_players/index'
-    get 'post_players/show'
-    get 'post_players/edit'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
+    resources :nationalities, only: [:index,:edit,:create,:update,:destroy]
+
+    resources :post_players, only: [:index,:show,:edit,:create,:update,:destroy] do
+      resources :comments, only: [:destroy]
+    end
+
+    resources :users, only: [:index,:show,:edit,:update]
+
   end
 
 

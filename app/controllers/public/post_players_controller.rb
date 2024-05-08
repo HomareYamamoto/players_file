@@ -1,4 +1,5 @@
 class Public::PostPlayersController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post_player=PostPlayer.new
@@ -24,12 +25,22 @@ class Public::PostPlayersController < ApplicationController
   end
 
   def edit
+    @post_player=PostPlayer.find(params[:id])
   end
 
   def update
+    @post_player=PostPlayer.find(params[:id])
+    if @post_player.update(post_player_params)
+      redirect_to public_post_player_path(@post_player.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @post_player = PostPlayer.find(params[:id])
+    @post_player.destroy
+    redirect_to public_post_players_path
   end
 
 
@@ -39,5 +50,11 @@ class Public::PostPlayersController < ApplicationController
     params.require(:post_player).permit(:name, :body, :nationality_id)
   end
 
+  def ensure_correct_user
+    @post_player = PostPlayer.find(params[:id])
+    unless @post_player.user == current_user
+      redirect_to public_post_players_path
+    end
+  end
 
 end

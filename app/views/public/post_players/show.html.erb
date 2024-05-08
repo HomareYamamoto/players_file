@@ -4,11 +4,34 @@
 
 <div class="container">
   <div class="row">
-    <h1>Player Detail</h1>
+    <div>
+      <h1>Player Detail</h1>
+    </div>
+    <% if @post_player.user == current_user %>
+    <div class="my-4 col-md-4 offset-1">
+      <%= link_to "Edit a player", edit_public_post_player_path(@post_player.id), class: "btn btn-success" %>
+      <%= link_to "Delete", public_post_player_path(@post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %>
+    </div>
+    <% end %>
   </div>
-  <div class="row">
-    
+  <div class="row ">
+    <div class="col-md-3">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="table-primary">Player Name</th>
+            <td><%= @post_player.name %></td>
+          </tr>
+          <tr>
+            <th class="table-primary">Nationality</th>
+            <td><%= @post_player.nationality.name %></td>
+          </tr>
+          <tr>
+            <th class="table-primary">Introduction</th>
+            <td><%= @post_player.body %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-
-<p>Find me in app/views/public/post_players/show.html.erb</p>

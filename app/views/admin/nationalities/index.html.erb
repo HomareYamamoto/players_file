@@ -48,7 +48,7 @@
             <tr>
               <td><%= nationality.name %></td>
               <td><%= link_to '編集する', edit_admin_nationality_path(nationality), class: 'btn btn-success' %></td>
-              <td><%= link_to '削除する', edit_admin_nationality_path(nationality), class: 'btn btn-danger', method: :delete %></td>
+              <td><%= link_to '削除する', admin_nationality_path(nationality), class: 'btn btn-danger', method: :delete %></td>
             </tr>
           <% end %>
         </tbody>

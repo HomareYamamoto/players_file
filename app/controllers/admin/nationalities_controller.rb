@@ -31,6 +31,14 @@ before_action :check_nationality_existence, only: [:edit, :update]
     end
   end
 
+  def destroy
+    @nationality = Nationality.find(params[:id])
+    @nationality.destroy
+    redirect_to admin_nationalities_path
+  end
+
+
+
   private
 
   def nationality_params

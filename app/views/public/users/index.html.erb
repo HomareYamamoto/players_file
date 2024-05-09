@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <h1 class="my-3"><strong>Users</strong></h1>
+    </div>
+  </div>
+  <div class="row">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr class="table-primary">
+          <th>User Name</th>
+          <th>Post PLAYERS</th>
+          <th>Follows</th>
+          <th>Followers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, public_user_path(user.id) %></td>
+            <td><%= link_to "#{user.post_players.count}", public_user_path(user.id) %></td>
+            <td colspan="2"></td>
+            <!--フォロー機能実装時に下記追加-->
+            <!--<td><%#= link_to "#{user.followings.count}", user_followings_path(user.id) %></td>-->
+            <!--<td><%#= link_to "#{user.followers.count}", user_followed_path(user.id) %></td>-->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

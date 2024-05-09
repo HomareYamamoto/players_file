@@ -1,0 +1,40 @@
+<div class="row">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr class="table-primary">
+          <th>User</th>
+          <th>Player Name</th>
+          <th>Nationality</th>
+          <th>Favorite</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% post_players.each do |post_player| %>
+          <tr>
+            <td><%= link_to post_player.user.name, public_user_path(post_player.user_id) %></td>
+            <td><%= link_to post_player.name, public_post_player_path(post_player.id) %></td>
+            <td><%= post_player.nationality.name %></td>
+
+            <!--<td id="favorite_btn_<%#= book.id %>"><%#= render 'favorites/favorite-btn', book: book %></td>-->
+            <td>
+              <% if post_player.favorited_by?(current_user) %>
+                <%= link_to public_post_player_favorite_path(post_player), method: :delete do %>
+                  ♥<%= post_player.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= link_to public_post_player_favorite_path(post_player), method: :post do %>
+                  ♡<%= post_player.favorites.count %>
+                <% end %>
+              <% end %>
+            </td>
+            <% if post_player.user == current_user %>
+            <td><%= link_to "Edit a player", edit_public_post_player_path(post_player.id), class: "btn btn-success" %></td>
+            <td><%= link_to "Delete", public_post_player_path(post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
+            <% else %>
+            <td colspan="2"></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

@@ -19,10 +19,9 @@
           <tr>
             <td><%= link_to user.name, public_user_path(user.id) %></td>
             <td><%= link_to "#{user.post_players.count}", public_user_path(user.id) %></td>
-            <td colspan="2"></td>
             <!--フォロー機能実装時に下記追加-->
-            <!--<td><%#= link_to "#{user.followings.count}", user_followings_path(user.id) %></td>-->
-            <!--<td><%#= link_to "#{user.followers.count}", user_followed_path(user.id) %></td>-->
+            <td><%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %></td>
+            <td><%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %></td>
           </tr>
         <% end %>
       </tbody>

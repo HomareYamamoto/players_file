@@ -9,28 +9,23 @@
         </tr>
         <tr>
           <th>follows</th>
-          <th></th>
-          <!--<th><%#= link_to "#{@user.followings.count}", publi_user_followings_path(@user.id) %></th>-->
+          <th><%= link_to "#{@user.followings.count}", public_user_followings_path(@user.id) %></th>
           <!--フォロー機能実装時にリンク追加-->
         </tr>
         <tr>
           <th>followers</th>
-          <th></th>
-          <!--<th><%#= link_to "#{@user.followers.count}", public_user_followers_path(@user.id) %></th>-->
+          <th><%= link_to "#{@user.followers.count}", public_user_followers_path(@user.id) %></th>
           <!--フォロー機能実装時にリンク追加-->
         </tr>
       </table>
-      <div>
+      <div class="row">
         <% if @user == current_user %>
           <%= link_to "Profile edit", edit_public_user_path(current_user.id), class: 'btn btn-success' %>
+        <% elsif current_user.following?(@user) %>
+          <%= link_to "フォロー外す", public_user_relationship_path(@user.id), class: "btn btn-secondary", method: :delete %>
         <% else %>
+          <%= link_to "フォローする", public_user_relationship_path(@user.id), class: 'btn btn-success', method: :post %>
         <% end %>
-        <!--<%# if current_user.following?(user) %>-->
-        <!--    <%#= link_to  "フォロー外す", user_relationship_path(user.id), class: "btn btn-secondary", method: :delete %>-->
-        <!--  <%# else %>-->
-        <!--    <%#= link_to "フォローする", user_relationship_path(user.id), class: 'btn btn-success', method: :post %>-->
-        <!--  <#% end %>-->
-        <!--フォロー機能実装時に追加-->
       </div>
     </div>
     <div class='col-md-8 offset-md-1'>

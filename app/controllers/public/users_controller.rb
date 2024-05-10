@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  # before_action :authenticate_customer!
+  # before_action :authenticate_user!
   before_action :check_user_existence, only: [:show, :edit, :update]
 
   def my_page
@@ -22,9 +22,9 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user=User.find(params[:id])
+    @user=current_user
     if @user.update(user_params)
-      redirect_to public_user_path(@user.id), notice: "You have updated user successfully."
+      redirect_to public_my_page_path, notice: "You have updated user successfully."
     else
       render :edit
     end

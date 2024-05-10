@@ -8,4 +8,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+
+  def active_for_authentication?
+    super && (is_active == true)
+  end
+
 end

@@ -64,7 +64,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   private
 
   def after_sign_in_path(resource)
-    root_path
+    public_post_players_path
   end
 
 

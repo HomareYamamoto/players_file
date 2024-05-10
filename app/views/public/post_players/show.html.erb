@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div>
-      <h1>Player Detail</h1>
+      <h1>Player detail</h1>
     </div>
     <% if @post_player.user == current_user %>
     <div class="my-4 col-md-4 offset-1">
@@ -44,5 +44,43 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="row offset-1">
+    <div>
+      <h3>Comment　<%= @post_player.comments.count %></h3>
+    </div>
+  </div>
+  <div class="row col-md-9 offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Comment user</th>
+            <th>Comment</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @post_player.comments.each do |comment| %>
+          <tr>
+            <td><%= comment.user.name %></td>
+            <td><%= comment.body %></td>
+            <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+            <% if comment.user == current_user %>
+            <th><%= link_to "Destroy", public_post_player_comment_path(comment.post_player, comment), method: :delete, class: 'btn btn-danger' %></th>
+            <% else %>
+            <th></th>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="row mt-5 offset-1">
+    <%= form_with model: [:public, @post_player, @comment] do |f| %>
+      <%= f.text_area :body %>
+      <%= f.submit "Comment" %>
+    <% end %>
   </div>
 </div>

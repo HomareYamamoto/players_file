@@ -22,6 +22,7 @@ class Public::PostPlayersController < ApplicationController
 
   def show
     @post_player=PostPlayer.find(params[:id])
+    @comment=Comment.new
   end
 
   def edit

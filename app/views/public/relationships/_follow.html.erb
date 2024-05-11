@@ -1,0 +1,20 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>follow</th>
+      <th>follower</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %></td>
+        <td><%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %></td>
+        <td><%= link_to 'Profile', public_user_path(user.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

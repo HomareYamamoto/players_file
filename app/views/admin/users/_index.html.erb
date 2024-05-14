@@ -1,10 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div>
-      <h1 class="my-3"><strong>PLAYERS</strong></h1>
-    </div>
-  </div>
-  <div class="row">
+<div class="row">
     <table class='table table-hover table-inverse'>
       <thead>
         <tr class="table-primary">
@@ -16,17 +10,19 @@
         </tr>
       </thead>
       <tbody>
-        <% @post_players.each do |post_player| %>
+        <% post_players.each do |post_player| %>
           <tr>
             <td><%= link_to post_player.user.name, admin_user_path(post_player.user_id) %></td>
             <td><%= link_to post_player.name, admin_post_player_path(post_player.id) %></td>
             <td><%= post_player.nationality.name %></td>
-            <td>♥<%= post_player.favorites.count %></td>
+
+            <!--<td id="favorite_btn_<%#= book.id %>"><%#= render 'favorites/favorite-btn', book: book %></td>-->
+            <td>
+              ♡<%= post_player.favorites.count %>
+            </td>
             <td><%= link_to "Edit a player", edit_admin_post_player_path(post_player.id), class: "btn btn-success" %></td>
             <td><%= link_to "Delete", admin_post_player_path(post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
-  </div>
-</div>

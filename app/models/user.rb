@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follower
   has_many :followers, through: :reverse_of_relationships, source: :follow
 
+  validates :name, presence: true
+  validates :email, presence: true
+
 
   def active_for_authentication?
     super && (is_active == true)

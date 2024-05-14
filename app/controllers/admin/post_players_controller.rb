@@ -18,6 +18,7 @@ class Admin::PostPlayersController < ApplicationController
   def update
     @post_player=PostPlayer.find(params[:id])
     if @post_player.update(post_player_params)
+      flash[:notice] = "投稿編集完了"
       redirect_to admin_post_player_path(@post_player.id)
     else
       render :edit

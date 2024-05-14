@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :check_user_existence, only: [:show, :edit, :update]
 
   def my_page

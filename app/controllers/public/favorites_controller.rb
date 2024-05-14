@@ -1,5 +1,5 @@
 class Public::FavoritesController < ApplicationController
-
+  before_action :authenticate_user!
 
   def create
     post_player = PostPlayer.find(params[:post_player_id])

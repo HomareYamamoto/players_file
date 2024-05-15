@@ -15,37 +15,28 @@
     <% end %>
   </div>
   <div class="row ">
-    <div class="col-md-4">
+    <div class="col-md-8">
       <table class="table table-bordered">
         <tbody>
-          <tr>
-            <th class="table-primary">Player Name</th>
-            <td>
-              <%= @post_player.name %>
-              <% if @post_player.favorited_by?(current_user) %>
-                <%= link_to public_post_player_favorite_path(@post_player), method: :delete do %>
-                  ♥<%= @post_player.favorites.count %>
-                <% end %>
-              <% else %>
-                <%= link_to public_post_player_favorite_path(@post_player), method: :post do %>
-                  ♡<%= @post_player.favorites.count %>
-                <% end %>
-              <% end %>
-            </td>
+          <tr class="table-primary">
+            <th>Player Name</th>
+            <th>Nationality</th>
+            <th>Favorite</th>
           </tr>
           <tr>
-            <th class="table-primary">Nationality</th>
+            <td><%= @post_player.name %></td>
             <td><%= @post_player.nationality.name %></td>
-          </tr>
-          <tr>
-            <th class="table-primary">Introduction</th>
-            <td><%= @post_player.body %></td>
+            <td id="favorite_<%= @post_player.id %>"><%= render 'public/favorites/favorite', post_player: @post_player %></td>
           </tr>
         </tbody>
       </table>
+      <div>
+        <h3>Introduction</h3>
+        <p><%= @post_player.body %></p>
+      </div>
     </div>
   </div>
-  <div class="row offset-1">
+  <div class="row offset-1 my-5">
     <div>
       <h3>Comment　<%= @post_player.comments.count %></h3>
     </div>

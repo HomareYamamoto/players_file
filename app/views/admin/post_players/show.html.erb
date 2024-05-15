@@ -1,2 +1,63 @@
-<h1>Admin::PostPlayers#show</h1>
-<p>Find me in app/views/admin/post_players/show.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div>
+      <h1>Player detail</h1>
+    </div>
+    <div class="my-4 col-md-4 offset-1">
+      <%= link_to "Edit a player", edit_admin_post_player_path(@post_player.id), class: "btn btn-success" %>
+      <%= link_to "Delete", admin_post_player_path(@post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-md-4">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="table-primary">Player Name</th>
+            <td><%= @post_player.name %>　♥<%= @post_player.favorites.count %></td>
+          </tr>
+          <tr>
+            <th class="table-primary">Nationality</th>
+            <td><%= @post_player.nationality.name %></td>
+          </tr>
+          <tr>
+            <th class="table-primary">Introduction</th>
+            <td><%= @post_player.body %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row offset-1">
+    <div>
+      <h3>Comment　<%= @post_player.comments.count %></h3>
+    </div>
+  </div>
+  <div class="row col-md-9 offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Comment</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @post_player.comments.each do |comment| %>
+          <tr>
+            <td><%= comment.user.name %></td>
+            <td><%= comment.body %></td>
+            <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= link_to "Destroy", admin_post_player_comment_path(comment.post_player, comment), method: :delete, class: 'btn btn-danger' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+
+</div>

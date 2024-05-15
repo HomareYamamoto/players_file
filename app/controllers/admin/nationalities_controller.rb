@@ -34,6 +34,7 @@ before_action :check_nationality_existence, only: [:edit, :update]
   def destroy
     @nationality = Nationality.find(params[:id])
     @nationality.destroy
+    flash[:notice] = "国籍を削除しました。"
     redirect_to admin_nationalities_path
   end
 

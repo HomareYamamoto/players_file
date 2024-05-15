@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'nationalities/index'
-    get 'nationalities/edit'
-  end
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
   }

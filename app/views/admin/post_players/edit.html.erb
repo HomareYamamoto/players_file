@@ -1,2 +1,34 @@
-<h1>Admin::PostPlayers#edit</h1>
-<p>Find me in app/views/admin/post_players/edit.html.erb</p>
+<% if @post_player.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @post_player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="container">
+  <%= form_with model: [:admin, @post_player], local: true , class: 'col-5 mx-auto my-5' do |f| %>
+  <div class="row form-group">
+    <%= f.label :'選手名' %>
+    <%= f.text_field :name, class: 'form-control post_player_name' %>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :'国籍', class: 'mr-3' %>
+    <%= f.collection_select :nationality_id, Nationality.all, :id, :name, include_blank: "選択して下さい", class: 'form-control post_player_nationality' %>
+  </div>
+
+
+  <div class="row form-group">
+    <%= f.label :'選手紹介文' %>
+    <%= f.text_area :body, class: 'form-control post_player_body' %>
+  </div>
+  <div class="row form-group">
+    <%= f.submit "Edit Player", class: 'btn btn-success' %>
+  </div>
+<% end %>
+</div>

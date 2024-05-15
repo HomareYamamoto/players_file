@@ -1,2 +1,30 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div>
+      <h1 class="my-3"><strong>Users</strong></h1>
+    </div>
+  </div>
+  <div class="row">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr class="table-primary">
+          <th>User Name</th>
+          <th>Post PLAYERS</th>
+          <th>Follows</th>
+          <th>Followers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, admin_user_path(user.id) %></td>
+            <td><%= link_to "#{user.post_players.count}", admin_user_path(user.id) %></td>
+            <!--フォロー機能実装時に下記追加-->
+            <td><%= "#{user.followings.count}" %></td>
+            <td><%= "#{user.followers.count}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

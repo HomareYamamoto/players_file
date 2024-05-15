@@ -1,4 +1,13 @@
-<%= flash[:notice] %>
+
+<% if @nationality.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @nationality.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <div class='container px-5 px-mt-5'>
   <div class="row p-1 mt-5">
     <h3>国名編集</h3>

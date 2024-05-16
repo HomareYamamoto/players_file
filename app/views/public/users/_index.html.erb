@@ -17,16 +17,8 @@
             <td><%= post_player.nationality.name %></td>
 
             <!--<td id="favorite_btn_<%#= book.id %>"><%#= render 'favorites/favorite-btn', book: book %></td>-->
-            <td>
-              <% if post_player.favorited_by?(current_user) %>
-                <%= link_to public_post_player_favorite_path(post_player), method: :delete do %>
-                  ♥<%= post_player.favorites.count %>
-                <% end %>
-              <% else %>
-                <%= link_to public_post_player_favorite_path(post_player), method: :post do %>
-                  ♡<%= post_player.favorites.count %>
-                <% end %>
-              <% end %>
+            <td id="favorite_<%= post_player.id %>">
+              <%= render 'public/favorites/favorite', post_player: post_player %>
             </td>
             <% if post_player.user == current_user %>
             <td><%= link_to "Edit a player", edit_public_post_player_path(post_player.id), class: "btn btn-success" %></td>

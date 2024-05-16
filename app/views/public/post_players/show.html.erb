@@ -37,8 +37,8 @@
     </div>
   </div>
   <div class="row offset-1 my-5">
-    <div>
-      <h3>Comment　<%= @post_player.comments.count %></h3>
+    <div id="comment_counter">
+      <%= render 'public/comments/comment_count', post_player: @post_player %>
     </div>
   </div>
   <div class="row col-md-9 offset-1">
@@ -51,27 +51,15 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <% @post_player.comments.each do |comment| %>
-          <tr>
-            <td><%= comment.user.name %></td>
-            <td><%= comment.body %></td>
-            <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-            <% if comment.user == current_user %>
-            <th><%= link_to "Destroy", public_post_player_comment_path(comment.post_player, comment), method: :delete, class: 'btn btn-danger' %></th>
-            <% else %>
-            <th></th>
-            <% end %>
-          </tr>
-          <% end %>
+        <tbody id="comment_index">
+          <%= render 'public/comments/comment_index', post_player: @post_player %>
         </tbody>
       </table>
   </div>
 
   <div class="row mt-5 offset-1">
-    <%= form_with model: [:public, @post_player, @comment] do |f| %>
-      <%= f.text_area :body %>
-      <%= f.submit "Comment" %>
-    <% end %>
+    <div id="comment_form">
+      <%= render 'public/comments/comment_form', post_player: @post_player, comment: @comment %>
+    </div>
   </div>
 </div>

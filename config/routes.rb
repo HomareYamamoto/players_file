@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get 'homes/about'
     get "search" => "searches#search"
 
+    resources :nationalities, only: [:show]
+
     resources :post_players, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
@@ -34,12 +36,11 @@ Rails.application.routes.draw do
 
 
 
-
   namespace :admin do
     get '/' => 'homes#top'
     get "search" => "searches#search"
 
-    resources :nationalities, only: [:index,:edit,:create,:update,:destroy]
+    resources :nationalities, only: [:show,:index,:edit,:create,:update,:destroy]
 
     resources :post_players, only: [:index,:show,:edit,:create,:update,:destroy] do
       resources :comments, only: [:destroy]

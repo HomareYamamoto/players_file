@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <h1><strong>Results index</strong></h1>
+  </div>
+  <div class="row">
+      <table class="table table-hover table-inverse">
+        <!--検索対象モデルがUserの時 -->
+        <% if @range == "User" %>
+          <thead>
+              <tr class="table-primary">
+                <th>Name</th>
+                <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><%= link_to "Profile", public_user_path(user.id), class: "btn btn-success" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% elsif @range == "PostPlayer" %>
+          <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+          <thead>
+              <tr class="table-primary">
+                <th>PLAYERS</th>
+                <th>Nationality</th>
+                <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @post_players.each do |post_player| %>
+              <tr>
+                <td><%= post_player.name %></td>
+                <td><%= post_player.nationality.name %></td>
+                <td><%= link_to "show", public_post_player_path(post_player.id) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% else %>
+          <thead>
+              <tr class="table-primary">
+                <th>Nationality</th>
+                <th>PLAYERS</th>
+                <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @nationalities.each do |nationality| %>
+              <tr>
+                <td><%= nationality.name %></td>
+                <td><%= nationality.post_players.count %></td>
+                <td><%= link_to "show", public_nationality_path(nationality.id) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>

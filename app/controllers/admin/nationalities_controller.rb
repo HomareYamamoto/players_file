@@ -1,5 +1,5 @@
 class Admin::NationalitiesController < ApplicationController
-before_action :check_nationality_existence, only: [:edit, :update]
+before_action :check_nationality_existence, only: [:show,:edit, :update]
 
   def create
     @nationality = Nationality.new(nationality_params)
@@ -10,6 +10,10 @@ before_action :check_nationality_existence, only: [:edit, :update]
         @nationalities = Nationality.all
         render :index
       end
+  end
+
+  def show
+    @nationality = Nationality.find(params[:id])
   end
 
   def index

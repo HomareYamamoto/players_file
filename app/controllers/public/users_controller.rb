@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_guest, only: [:edit, :update, :unsubscribe]
   before_action :check_user_existence, only: [:show, :edit, :update]
 
   def my_page
@@ -41,6 +42,11 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_player_id)
+    @favorite_post_players = PostPlayer.find(favorites)
+  end
 
   private
 
@@ -53,6 +59,14 @@ class Public::UsersController < ApplicationController
       unless @user
         redirect_to public_users_path
       end
+  end
+
+
+  def check_guest
+    user = current_user
+    if user.name == "ゲスト" && user.email == "guest@example.com"
+      redirect_to public_my_page_path
+    end
   end
 
 end

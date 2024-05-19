@@ -9,11 +9,18 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
 
+
+
   root to: 'public/homes#top'
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
   namespace :public do
     get 'homes/about'
     get "search" => "searches#search"
+
 
     resources :nationalities, only: [:show]
 
@@ -27,6 +34,9 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' =>'users#unsubscribe', as: :unsubscribe
     patch 'users/withdraw' =>'users#withdraw', as: :withdraw
     resources :users, only: [:index,:show,:edit,:update] do
+      member do
+        get :favorites
+      end
       resource :relationship, only: [:create,:destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'

@@ -1,5 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_guest, only: [:create]
 
   def create
     current_user.follow(params[:user_id])
@@ -23,5 +24,15 @@ class Public::RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
+
+  private
+
+  def check_guest
+    user = current_user
+    if user.name == "ゲスト" && user.email == "guest@example.com"
+      redirect_to public_my_page_path
+    end
+  end
+
 
 end

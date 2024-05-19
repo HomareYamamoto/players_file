@@ -23,6 +23,16 @@ class User < ApplicationRecord
     super && (is_active == true)
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      user.name = "ゲスト"
+    end
+  end
+
+
+
   # フォローしたときの処理
   def follow(user_id)
     relationships.create(follower_id: user_id)

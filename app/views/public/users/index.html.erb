@@ -7,7 +7,7 @@
       <h1 class="my-3"><strong>Users</strong></h1>
     </div>
   </div>
-  <div class="row">
+  <div class="row col-md-10">
     <table class='table table-hover table-inverse'>
       <thead>
         <tr class="table-primary">
@@ -15,6 +15,7 @@
           <th>Post PLAYERS</th>
           <th>Follows</th>
           <th>Followers</th>
+          <th>Favorites</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +26,7 @@
             <!--フォロー機能実装時に下記追加-->
             <td><%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %></td>
             <td><%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %></td>
+            <td><%= link_to "Show", favorites_public_user_path(user.id) %></td>
           </tr>
         <% end %>
       </tbody>

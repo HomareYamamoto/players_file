@@ -12,13 +12,14 @@
               </tr>
             </thead>
             <tbody>
-              <% @nationality.post_players.each do |post_player| %>
+              <% @nationality_post_players.each do |post_player| %>
               <tr>
                 <td><%= link_to post_player.user.name, public_user_path(post_player.user.id) %></td>
                 <td><%= post_player.name %></td>
                 <td><%= link_to "show", public_post_player_path(post_player.id) %></td>
               </tr>
               <% end %>
+              <%= paginate @nationality_post_players %>
             </tbody>
           </table>
         </div>

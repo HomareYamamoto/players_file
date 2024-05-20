@@ -2,12 +2,12 @@ class Admin::UsersController < ApplicationController
   before_action :check_user_existence, only: [:show, :edit, :update]
 
   def index
-    @users=User.all
+    @users=User.page(params[:page])
   end
 
   def show
     @user=User.find(params[:id])
-    @post_players=@user.post_players
+    @post_players=@user.post_players.page(params[:page])
   end
 
   def edit

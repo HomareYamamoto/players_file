@@ -17,7 +17,7 @@ before_action :check_nationality_existence, only: [:show,:edit, :update]
   end
 
   def index
-    @nationalities = Nationality.all
+    @nationalities = Nationality.page(params[:page])
     @nationality = Nationality.new
   end
 

@@ -3,7 +3,7 @@ class Admin::PostPlayersController < ApplicationController
 
 
   def index
-    @post_players=PostPlayer.all
+    @post_players=PostPlayer.page(params[:page]).per(10)
   end
 
   def show

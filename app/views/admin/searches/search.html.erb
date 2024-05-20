@@ -19,6 +19,7 @@
                 <td><%= link_to "Profile", admin_user_path(user.id), class: "btn btn-success" %></td>
               </tr>
             <% end %>
+            <%= paginate @users %>
           </tbody>
         <% elsif @range == "PostPlayer" %>
           <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
@@ -37,6 +38,7 @@
                 <td><%= link_to "show", admin_post_player_path(post_player.id) %></td>
               </tr>
             <% end %>
+            <%= paginate @post_players %>
           </tbody>
         <% else %>
           <thead>
@@ -54,6 +56,7 @@
                 <td><%= link_to "show", admin_nationality_path(nationality.id) %></td>
               </tr>
             <% end %>
+            <%= paginate @nationalities %>
           </tbody>
         <% end %>
       </table>

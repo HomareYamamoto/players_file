@@ -29,6 +29,7 @@
             <td><%= link_to "Delete", admin_post_player_path(post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
           </tr>
         <% end %>
+        <%= paginate @post_players %>
       </tbody>
     </table>
   </div>

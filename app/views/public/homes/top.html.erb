@@ -6,11 +6,30 @@
       <h3 class="mx-auto font-weight-bold">あなたの思う今一番キテる選手を教えてください</h3>
   </div>
   <div class="row">
-      <h3 class="mx-auto font-weight-bold"> Who's next?</h3>
+      <h3 class="mx-auto font-weight-bold"> Who's Next?</h3>
   </div>
   <% if user_signed_in? %>
   <div></div>
   <% else %>
-  <div><%= link_to 'ゲストログイン', new_user_session_path,　class: "btn btn-secondary" %></div>
+  <div><%= link_to 'ゲストログイン', new_user_session_path, class: "btn btn-secondary" %></div>
   <% end %>
+  <div class="row my-3">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr class="table-primary">
+          <th>PLAYER</th>
+          <th>Nationality</th>
+          <th>Favorite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @post_players.each do |post_player| %>
+          <tr>
+            <td><%= post_player.name %></td>
+            <td><%= post_player.nationality.name %></td>
+            <td><%= post_player.favorites.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>

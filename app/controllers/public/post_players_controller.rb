@@ -18,7 +18,7 @@ class Public::PostPlayersController < ApplicationController
   end
 
   def index
-    @post_players=PostPlayer.all
+    @post_players=PostPlayer.page(params[:page]).per(10)
   end
 
   def show
@@ -33,7 +33,7 @@ class Public::PostPlayersController < ApplicationController
   def update
     @post_player=PostPlayer.find(params[:id])
     if @post_player.update(post_player_params)
-      redirect_to public_post_player_path(@post_player.id)
+      redirect_to public_post_player_path(@post_player.id),notice: "更新完了"
     else
       render :edit
     end

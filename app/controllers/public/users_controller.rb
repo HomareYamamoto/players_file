@@ -5,17 +5,17 @@ class Public::UsersController < ApplicationController
 
   def my_page
     @user=current_user
-    @post_players=@user.post_players
+    @post_players=@user.post_players.page(params[:page]).per(10)
   end
 
 
   def index
-    @users=User.all
+    @users=User.page(params[:page]).per(10)
   end
 
   def show
     @user=User.find(params[:id])
-    @post_players=@user.post_players
+    @post_players=@user.post_players.page(params[:page]).per(10)
   end
 
   def edit
@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
   def update
     @user=current_user
     if @user.update(user_params)
-      redirect_to public_my_page_path, notice: "You have updated user successfully."
+      redirect_to public_my_page_path, notice: "更新完了"
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_player_id)
-    @favorite_post_players = PostPlayer.find(favorites)
+    @favorite_post_players = PostPlayer.where(id: favorites).page(params[:page]).per(10)
   end
 
   private

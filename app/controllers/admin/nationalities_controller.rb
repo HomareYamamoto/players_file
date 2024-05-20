@@ -7,17 +7,18 @@ before_action :check_nationality_existence, only: [:show,:edit, :update]
         flash[:notice] = "国籍を登録しました。"
         redirect_to admin_nationalities_path
       else
-        @nationalities = Nationality.all
+        @nationalities = Nationality.page(params[:page]).per(8)
         render :index
       end
   end
 
   def show
     @nationality = Nationality.find(params[:id])
+    @nationality_post_players=@nationality.post_players.page(params[:page]).per(10)
   end
 
   def index
-    @nationalities = Nationality.page(params[:page])
+    @nationalities = Nationality.page(params[:page]).per(8)
     @nationality = Nationality.new
   end
 

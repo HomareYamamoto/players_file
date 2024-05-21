@@ -24,8 +24,8 @@
             <td><%= "#{user.followers.count}" %></td>
           </tr>
         <% end %>
-        <%= paginate @users %>
       </tbody>
     </table>
+    <div class="mx-auto"><%= paginate @users %></div>
   </div>
 </div>

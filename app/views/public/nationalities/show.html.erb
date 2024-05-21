@@ -19,8 +19,8 @@
                 <td><%= link_to "show", public_post_player_path(post_player.id) %></td>
               </tr>
               <% end %>
-              <%= paginate @nationality_post_players %>
             </tbody>
           </table>
+          <div class="mx-auto"><%= paginate @nationality_post_players %></div>
         </div>
       </div>

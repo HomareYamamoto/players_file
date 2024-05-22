@@ -3,7 +3,7 @@ class Public::NationalitiesController < ApplicationController
 
   def show
     @nationality = Nationality.find(params[:id])
-    @nationality_post_players=@nationality.post_players.page(params[:page]).per(10)
+    @nationality_post_players=@nationality.post_players.page(params[:page]).per(4)
   end
 
   private

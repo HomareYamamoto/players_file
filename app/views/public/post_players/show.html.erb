@@ -5,37 +5,42 @@
 <div class="container">
   <div class="row">
     <div>
-      <h1>Player detail</h1>
+      <h1>PLAYER</h1>
     </div>
-    <% if @post_player.user == current_user %>
-    <div class="my-4 col-md-4 offset-1">
-      <%= link_to "Edit a player", edit_public_post_player_path(@post_player.id), class: "btn btn-success" %>
-      <%= link_to "Delete", public_post_player_path(@post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %>
-    </div>
-    <% end %>
   </div>
-  <div class="row ">
-    <div class="col-md-8">
-      <table class="table table-bordered">
-        <tbody>
-          <tr class="table-primary">
-            <th>Player Name</th>
-            <th>Nationality</th>
-            <th>Favorite</th>
-          </tr>
-          <tr>
-            <td><%= @post_player.name %></td>
-            <td><%= @post_player.nationality.name %></td>
-            <td id="favorite_<%= @post_player.id %>"><%= render 'public/favorites/favorite', post_player: @post_player %></td>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        <h3>Introduction</h3>
-        <p><%= @post_player.body %></p>
+</div>
+<div class="card-list-container py-3">
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= link_to @post_player.user.name, public_user_path(@post_player.user_id) %>
+        </div>
+        <div class="col-2">
+          <p class="card-title">
+            <strong><i class="far fa-flag"></i><span> <%= @post_player.name %></span></strong>
+          </p>
+          <p class="card-text"><%= @post_player.nationality.name %></p>
+          <span id="favorite_<%= @post_player.id %>">
+            <%= render 'public/favorites/favorite', post_player: @post_player %>
+          </span>
+          </div>
+          <div class="col-5">
+            <%= @post_player.body %>
+          </div>
+          <div class="col-3">
+            <% if @post_player.user == current_user %>
+            <div class="my-3"><%= link_to "Edit", edit_public_post_player_path(@post_player.id), class: "btn btn-success" %></div>
+            <div class="my-3"><%= link_to "Delete", public_post_player_path(@post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></div>
+            <% else %>
+            <div></div>
+            <% end %>
+          </div>
       </div>
     </div>
   </div>
+</div>
+<div class="container">
   <div class="row offset-1 my-5">
     <div id="comment_counter">
       <%= render 'public/comments/comment_count', post_player: @post_player %>

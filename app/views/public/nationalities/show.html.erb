@@ -2,25 +2,37 @@
         <div class="row">
           <h1><strong><%= @nationality.name %></strong></h1>
         </div>
-        <div class="row">
-          <table class="table table-hover table-inverse">
-            <thead>
-              <tr>
-                <th>User</th>
-                <th>PLAYERS</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @nationality_post_players.each do |post_player| %>
-              <tr>
-                <td><%= link_to post_player.user.name, public_user_path(post_player.user.id) %></td>
-                <td><%= post_player.name %></td>
-                <td><%= link_to "show", public_post_player_path(post_player.id) %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <div class="mx-auto"><%= paginate @nationality_post_players %></div>
+      </div>
+      <div class="offset-6"><%= paginate @nationality_post_players %></div>
+      <div class="card-list-container py-5">
+        <% @nationality_post_players.each do |post_player| %>
+        <div class="card w-50 mx-auto mt-4 shadow-lg">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-2">
+                <%= link_to post_player.user.name, public_user_path(post_player.user.id) %>
+              </div>
+              <div class="col-2">
+                <p class="card-title">
+                    <strong><i class="far fa-flag"></i><span> <%= link_to post_player.name, public_post_player_path(post_player.id) %></span></strong>
+                </p>
+                <span id="favorite_<%= post_player.id %>">
+                  <%= render 'public/favorites/favorite', post_player: post_player %>
+                </span>
+              </div>
+              <div class="col-5">
+                <%= post_player.body %>
+              </div>
+              <div class="col-3">
+                <% if post_player.user == current_user %>
+                <div class="my-3"><%= link_to "Edit", edit_public_post_player_path(post_player.id), class: "btn btn-success" %></div>
+                <div class="my-3"><%= link_to "Delete", public_post_player_path(post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></div>
+                <% else %>
+                <div></div>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
+        <% end %>
       </div>

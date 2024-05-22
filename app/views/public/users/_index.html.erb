@@ -21,14 +21,14 @@
               <%= render 'public/favorites/favorite', post_player: post_player %>
             </td>
             <% if post_player.user == current_user %>
-            <td><%= link_to "Edit a player", edit_public_post_player_path(post_player.id), class: "btn btn-success" %></td>
+            <td><%= link_to "Edit", edit_public_post_player_path(post_player.id), class: "btn btn-success" %></td>
             <td><%= link_to "Delete", public_post_player_path(post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
             <% else %>
             <td colspan="2"></td>
             <% end %>
           </tr>
         <% end %>
-
       </tbody>
     </table>
     <div class="mx-auto"><%= paginate post_players %></div>
+</div>

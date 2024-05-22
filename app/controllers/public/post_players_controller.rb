@@ -18,7 +18,7 @@ class Public::PostPlayersController < ApplicationController
   end
 
   def index
-    @post_players=PostPlayer.page(params[:page]).per(10)
+    @post_players=PostPlayer.page(params[:page]).per(4)
   end
 
   def show

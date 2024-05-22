@@ -9,6 +9,7 @@
           <thead>
               <tr class="table-primary">
                 <th>Name</th>
+                <th>PLAYERS</th>
                 <th></th>
               </tr>
           </thead>
@@ -16,6 +17,7 @@
             <% @users.each do |user| %>
               <tr>
                 <td><%= user.name %></td>
+                <td><%= user.post_players.count %></td>
                 <td><%= link_to "Profile", public_user_path(user.id), class: "btn btn-success" %></td>
               </tr>
             <% end %>

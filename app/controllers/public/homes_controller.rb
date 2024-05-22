@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @post_players=PostPlayer.order('id DESC').limit(8)
+    @post_players=PostPlayer.order('id DESC').limit(3)
   end
 
   def about

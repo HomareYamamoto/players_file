@@ -1,6 +1,6 @@
 <% post_player.comments.each do |comment| %>
 <tr>
-  <td><%= comment.user.name %></td>
+  <td><%= link_to comment.user.name, public_user_path(comment.user.id) %></td>
   <td><%= comment.body %></td>
   <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
   <% if comment.user == current_user %>

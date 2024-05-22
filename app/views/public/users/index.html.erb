@@ -29,8 +29,8 @@
             <td><%= link_to "Show", favorites_public_user_path(user.id) %></td>
           </tr>
         <% end %>
-        <%= paginate @users %>
       </tbody>
     </table>
+    <div class="mx-auto"><%= paginate @users %></div>
   </div>
 </div>

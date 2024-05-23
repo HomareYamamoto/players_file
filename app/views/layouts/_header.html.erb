@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>PLAYERS FILE</span></a>
+      <a class="navbar-brand" href="/"><span><i class="fa-regular fa-file"></i> PLAYERS FILE</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,7 +20,7 @@
           </li>
           <li>
             <%=  link_to public_post_players_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-post-players-open"></i> 投稿一覧
+              <i class="fa-regular fa-file-lines"></i> 投稿一覧
             <% end %>
           </li>
           <li>
@@ -32,17 +32,17 @@
         <% elsif admin_signed_in? %>
             <li>
             <%=  link_to admin_users_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-uers"></i> 会員一覧
+              <i class="fa-solid fa-users"></i> 会員一覧
             <% end %>
             </li>
             <li>
             <%=  link_to admin_post_players_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-post-players"></i> 投稿一覧
+              <i class="fa-regular fa-file-lines"></i> 投稿一覧
             <% end %>
           　</li>
             <li>
             <%=  link_to admin_nationalities_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-nationalities"></i> 国籍一覧
+              <i class="fa-regular fa-flag"></i> 国籍一覧
             <% end %>
             </li>
             <li>
@@ -54,7 +54,7 @@
         <% else %>
           <li>
             <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
+              <i class="fas fa-home"></i> ホーム
             <% end %>
           </li>
           <li>

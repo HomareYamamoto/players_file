@@ -8,8 +8,8 @@
         <% if @range == "User" %>
           <thead>
               <tr class="table-primary">
-                <th>Name</th>
-                <th>PLAYERS</th>
+                <th><i class="fa-solid fa-users"></i>Name</th>
+                <th><i class="fa-regular fa-file-lines"></i>PLAYERS</th>
                 <th></th>
               </tr>
           </thead>
@@ -27,8 +27,8 @@
           <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
           <thead>
               <tr class="table-primary">
-                <th>PLAYERS</th>
-                <th>Nationality</th>
+                <th><i class="fa-regular fa-file-lines"></i>PLAYERS</th>
+                <th><i class="fa-regular fa-flag"></i>Nationality</th>
                 <th></th>
               </tr>
           </thead>
@@ -37,7 +37,7 @@
               <tr>
                 <td><%= post_player.name %></td>
                 <td><%= post_player.nationality.name %></td>
-                <td><%= link_to "show", public_post_player_path(post_player.id) %></td>
+                <td><%= link_to "show", public_post_player_path(post_player.id), class: "btn btn-success" %></td>
               </tr>
             <% end %>
             <%= paginate @post_players %>
@@ -45,8 +45,8 @@
         <% else %>
           <thead>
               <tr class="table-primary">
-                <th>Nationality</th>
-                <th>PLAYERS</th>
+                <th><i class="fa-regular fa-flag"></i>Nationality</th>
+                <th><i class="fa-regular fa-file-lines"></i>PLAYERS</th>
                 <th></th>
               </tr>
           </thead>
@@ -55,7 +55,7 @@
               <tr>
                 <td><%= nationality.name %></td>
                 <td><%= nationality.post_players.count %></td>
-                <td><%= link_to "show", public_nationality_path(nationality.id) %></td>
+                <td><%= link_to "show", public_nationality_path(nationality.id), class: "btn btn-success" %></td>
               </tr>
             <% end %>
             <%= paginate @nationalities %>

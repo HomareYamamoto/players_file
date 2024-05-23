@@ -2,10 +2,10 @@
     <table class='table table-hover table-inverse'>
       <thead>
         <tr class="table-primary">
-          <th>User</th>
-          <th>Player Name</th>
-          <th>Nationality</th>
-          <th>Favorite</th>
+          <th><i class="fa-solid fa-users"></i>User</th>
+          <th><i class="fa-regular fa-file-lines"></i>Player Name</th>
+          <th><i class="fa-regular fa-flag"></i>Nationality</th>
+          <th><i class="fa-regular fa-thumbs-up"></i></th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -21,7 +21,7 @@
               <%= render 'public/favorites/favorite', post_player: post_player %>
             </td>
             <% if post_player.user == current_user %>
-            <td><%= link_to "Edit", edit_public_post_player_path(post_player.id), class: "btn btn-success" %></td>
+            <td><%= link_to edit_public_post_player_path(post_player.id) do %><i class="fa-regular fa-pen-to-square"></i><% end %></td>
             <td><%= link_to "Delete", public_post_player_path(post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
             <% else %>
             <td colspan="2"></td>

@@ -11,11 +11,11 @@
     <table class='table table-hover table-inverse'>
       <thead>
         <tr class="table-primary">
-          <th>User Name</th>
-          <th>Post PLAYERS</th>
+          <th><i class="fa-solid fa-users"></i>User</th>
+          <th><i class="fa-regular fa-file-lines"></i>Post PLAYERS</th>
           <th>Follows</th>
           <th>Followers</th>
-          <th>Favorites</th>
+          <th><i class="fa-regular fa-thumbs-up"></i></th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +26,7 @@
             <!--フォロー機能実装時に下記追加-->
             <td><%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %></td>
             <td><%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %></td>
-            <td><%= link_to "Show", favorites_public_user_path(user.id) %></td>
+            <td><%= link_to "Show", favorites_public_user_path(user.id), class: "btn btn-success" %></td>
           </tr>
         <% end %>
       </tbody>

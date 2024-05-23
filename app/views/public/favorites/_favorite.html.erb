@@ -1,9 +1,9 @@
 <% if post_player.favorited_by?(current_user) %>
   <%= link_to public_post_player_favorite_path(post_player), method: :delete, remote: true do %>
-    ♥<%= post_player.favorites.count %>
+    <i class="fa-solid fa-thumbs-up"></i><%= post_player.favorites.count %>
   <% end %>
 <% else %>
   <%= link_to public_post_player_favorite_path(post_player), method: :post, remote: true do %>
-    ♡<%= post_player.favorites.count %>
+    <i class="fa-regular fa-thumbs-up"></i><%= post_player.favorites.count %>
   <% end %>
 <% end %>

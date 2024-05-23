@@ -50,7 +50,7 @@
               <td><%= link_to post_player.name, public_post_player_path(post_player.id) %></td>
               <td><%= post_player.nationality.name %></td>
               <% if post_player.user == current_user %>
-              <td><%= link_to "Edit a player", edit_public_post_player_path(post_player.id), class: "btn btn-success" %></td>
+              <td><%= link_to edit_public_post_player_path(post_player.id) do %><i class="fa-regular fa-pen-to-square"></i><% end %></td>
               <td><%= link_to "Delete", public_post_player_path(post_player.id), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
               <% else %>
               <td colspan="2"></td>

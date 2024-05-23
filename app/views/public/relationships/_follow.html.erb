@@ -1,7 +1,7 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>User</th>
+      <th><i class="fa-solid fa-users"></i>User</th>
       <th>follow</th>
       <th>follower</th>
       <th></th>
@@ -13,7 +13,7 @@
         <td><%= user.name %></td>
         <td><%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %></td>
         <td><%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %></td>
-        <td><%= link_to 'Profile', public_user_path(user.id) %></td>
+        <td><%= link_to 'Profile', public_user_path(user.id), class: "btn btn-success" %></td>
       </tr>
     <% end %>
   </tbody>

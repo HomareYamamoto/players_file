@@ -23,7 +23,11 @@
 - 選手のターニングポイントが知りたいとき
 
 ## 設計書
-後程作成予定。
+- ER図：https://app.diagrams.net/#G1NPcB1uTqeq3lqD_uL8r4qEDZGu8f78pm#%7B%22pageId%22%3A%22LkA-50vI9zVlM_wPANrl%22%7D
+- UI_Flows：https://app.diagrams.net/#G1lpmeRHVi-sXWXEdrFQprCbA9nyyixzl-#%7B%22pageId%22%3A%2248jVFMlgaSScSIEwnXbb%22%7D
+- テーブル定義書：https://docs.google.com/spreadsheets/d/1-RK60F_FeXuW26y6XovDVpdPhPrFfZbgJ38Qr_FZ9nQ/edit#gid=1044500859
+- 詳細設計書：https://docs.google.com/spreadsheets/d/1Q5DPqffoptE-P96S4BR6L1Z09d69nN0mtcTRDTN5OBI/edit#gid=549108681
+- https://docs.google.com/spreadsheets/d/1uxiQRRKlbe6h2WFZW78XAD8MwwpVZJghKTDT7SFoUFI/edit#gid=1008727731
 
 ## 開発環境
 - OS：Linux(CentOS)

@@ -56,7 +56,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
     end
 
-    resources :users, only: [:index,:show,:edit,:update]
+    resources :users, only: [:index,:show,:edit,:update] do
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
 
   end
 

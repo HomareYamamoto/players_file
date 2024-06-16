@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user=User.find(params[:id])
-    @post_players=@user.post_players.page(params[:page]).per(10)
+    @post_players=@user.post_players.page(params[:page]).per(11)
   end
 
   def edit

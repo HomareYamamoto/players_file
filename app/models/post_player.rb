@@ -4,7 +4,7 @@ class PostPlayer < ApplicationRecord
   belongs_to :nationality
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-
+  has_many :notifications, as: :notifiable, dependent: :destroy #追記
 
 
   validates :name, presence: true
@@ -13,6 +13,12 @@ class PostPlayer < ApplicationRecord
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
+    end
   end
 
   def self.looks(search, word)

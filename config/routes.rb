@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'homes/about'
     get "search" => "searches#search"
 
+    resources :notifications, only: [:update]
 
     resources :nationalities, only: [:show]
 

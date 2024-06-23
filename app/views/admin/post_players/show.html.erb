@@ -53,7 +53,7 @@
             <td><%= comment.user.name %></td>
             <td><%= comment.body %></td>
             <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= link_to "Destroy", admin_post_player_comment_path(comment.post_player, comment), method: :delete, class: 'btn btn-danger' %></td>
+            <td><%= link_to "Destroy", admin_post_player_comment_path(comment.post_player, comment), method: :delete, data: {confirm: "削除しますか？"}, method: :delete, class: 'btn btn-danger' %></td>
           </tr>
           <% end %>
         </tbody>

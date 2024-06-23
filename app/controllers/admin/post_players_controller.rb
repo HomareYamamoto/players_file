@@ -3,7 +3,7 @@ class Admin::PostPlayersController < ApplicationController
 
 
   def index
-    @post_players=PostPlayer.page(params[:page]).per(10)
+    @post_players=PostPlayer.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def show

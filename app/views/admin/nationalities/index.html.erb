@@ -49,7 +49,7 @@
             <tr>
               <td><%= link_to nationality.name, admin_nationality_path(nationality) %></td>
               <td><%= link_to '編集する', edit_admin_nationality_path(nationality), class: 'btn btn-success' %></td>
-              <td><%= link_to '削除する', admin_nationality_path(nationality), class: 'btn btn-danger', method: :delete %></td>
+              <td><%= link_to '削除する', admin_nationality_path(nationality), data: {confirm: "削除しますか？"}, class: 'btn btn-danger', method: :delete %></td>
             </tr>
           <% end %>
         </tbody>

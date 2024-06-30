@@ -11,6 +11,13 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="text-center">
+    <%= link_to '新着順', public_post_players_path(latest: "true") %>/
+    <%= link_to '古い順', public_post_players_path(old: "true") %>
+    <!--<%#= link_to 'いいね順', public_post_players_path(most_favorited: "true") %>-->
+  </div>
+</div>
 <div class="jscroll">
   <div class="card-list-container">
     <% @post_players.each do |post_player| %>
@@ -39,8 +46,6 @@
               <% if post_player.user == current_user %>
               <div class="my-3"><%= link_to edit_public_post_player_path(post_player.id) do %><i class="fa-regular fa-pen-to-square"></i><% end %></div>
               <div class="my-3"><%= link_to "Delete", public_post_player_path(post_player.id), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></div>
-              <% else %>
-              <div></div>
               <% end %>
             </div>
           </div>

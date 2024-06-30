@@ -3,6 +3,7 @@ class PostPlayer < ApplicationRecord
   belongs_to :user
   belongs_to :nationality
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy #追記
 
@@ -10,6 +11,10 @@ class PostPlayer < ApplicationRecord
   validates :name, presence: true
   validates :nationality_id, presence: true
   validates :body, presence: true
+
+  scope :latest, -> { order(created_at: :desc) }  #desc = 降順
+  scope :old, -> { order(created_at: :asc) }  #asc = 昇順
+  # scope :most_favorited, -> { includes(:favorites).sort_by { |x| x.favorites.includes(:favorites).size }.reverse }
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

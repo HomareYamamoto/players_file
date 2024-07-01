@@ -19,12 +19,13 @@ class Public::PostPlayersController < ApplicationController
 
   def index
     # @post_players=PostPlayer.page(params[:page]).per(5).order(created_at: :desc)並べ替え実装につき廃止
+
     if params[:latest]
       @post_players = PostPlayer.latest.page(params[:page]).per(5)
     elsif params[:old]
       @post_players = PostPlayer.old.page(params[:page]).per(5)
     # elsif params[:most_favorited]
-    #   @post_players = PostPlayer.most_favorited.page(params[:page]).per(5)
+    #   @post_players = PostPlayer.most_favorited.paginate_array.page(params[:page]).per(5)　#いいね数順うまくいかずまた日を改めることに
     else
       @post_players = PostPlayer.page(params[:page]).per(5).order(created_at: :desc)
     end

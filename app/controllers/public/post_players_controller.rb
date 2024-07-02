@@ -24,8 +24,9 @@ class Public::PostPlayersController < ApplicationController
       @post_players = PostPlayer.latest.page(params[:page]).per(5)
     elsif params[:old]
       @post_players = PostPlayer.old.page(params[:page]).per(5)
-    # elsif params[:most_favorited]
-    #   @post_players = PostPlayer.most_favorited.paginate_array.page(params[:page]).per(5)　#いいね数順うまくいかずまた日を改めることに
+    elsif params[:most_favorited]
+      most_favorited = PostPlayer.includes(:favorites).sort_by { |x| x.favorites.includes(:favorites).size }.reverse
+      @post_players=Kaminari.paginate_array(most_favorited).page(params[:page]).per(5)
     else
       @post_players = PostPlayer.page(params[:page]).per(5).order(created_at: :desc)
     end

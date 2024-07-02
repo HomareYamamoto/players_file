@@ -7,30 +7,24 @@
       <h1 class="my-3"><strong>Users</strong></h1>
     </div>
   </div>
-  <div class="row col-md-10">
-    <table class='table table-hover table-inverse'>
-      <thead>
-        <tr class="table-primary">
-          <th><i class="fa-solid fa-users"></i>User</th>
-          <th><i class="fa-regular fa-file-lines"></i>Post PLAYERS</th>
-          <th>Follows</th>
-          <th>Followers</th>
-          <th><i class="fa-regular fa-thumbs-up"></i></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= link_to user.name, public_user_path(user.id) %></td>
-            <td><%= link_to "#{user.post_players.count}", public_user_path(user.id) %></td>
-            <!--フォロー機能実装時に下記追加-->
-            <td><%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %></td>
-            <td><%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %></td>
-            <td><%= link_to "Show", favorites_public_user_path(user.id), class: "btn btn-success" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="mx-auto"><%= paginate @users %></div>
-  </div>
 </div>
+<div class="card-list-container">
+  <% @users.each do |user| %>
+    <div class="card w-25 mx-auto mt-4 shadow-lg">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="card-title">
+              <strong><span> <%= link_to public_user_path(user.id) do %><i class="fa-solid fa-user"></i><%= user.name %><% end %></span></strong>
+            </h5>
+            <p class="card-text">POST PLAYER <%= link_to "#{user.post_players.count}", public_user_path(user.id) %></p>
+            <div>Follow <%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %></div>
+            <div>Follower <%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %></div>
+            <div><%= link_to "Favorites", favorites_public_user_path(user.id), class: "btn btn-success" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="mx-auto"><%= paginate @users %></div>

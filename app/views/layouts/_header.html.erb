@@ -9,6 +9,9 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li>
+            <%= link_to "Post", new_public_post_player_path, class: "btn btn-primary" %>
+          </li>
+          <li>
             <%= link_to public_my_page_path,class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> マイページ
             <%end %>

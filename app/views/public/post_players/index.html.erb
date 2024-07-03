@@ -39,10 +39,10 @@
                 <%= render 'public/comments/comment_count', post_player: post_player %>
               </span>
             </div>
-            <div class="col-5">
+            <div class="col-6">
               <%= post_player.body %>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <% if post_player.user == current_user %>
               <div class="my-3"><%= link_to edit_public_post_player_path(post_player.id) do %><i class="fa-regular fa-pen-to-square"></i><% end %></div>
               <div class="my-3"><%= link_to "Delete", public_post_player_path(post_player.id), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></div>

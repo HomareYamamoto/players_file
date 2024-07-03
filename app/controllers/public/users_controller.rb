@@ -45,7 +45,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_player_id)
-    @favorite_post_players = PostPlayer.where(id: favorites).page(params[:page]).per(10)
+    @favorite_post_players = PostPlayer.where(id: favorites).page(params[:page]).per(4).order(created_at: :desc)
   end
 
   private

@@ -1,30 +1,42 @@
 <div class="container">
   <div class="row">
-    <%= render 'layouts/search' %>
-  </div>
-  <div class="row">
     <div>
-      <h1 class="my-3"><strong>Users</strong></h1>
+      <h1 class="my-5"><strong>USERS</strong></h1>
+    </div>
+    <div class="my-3">
+      <%= render 'layouts/search' %>
     </div>
   </div>
 </div>
-<div class="card-list-container">
-  <% @users.each do |user| %>
-    <div class="card w-25 mx-auto mt-4 shadow-lg">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-12">
-            <h5 class="card-title">
-              <strong><span> <%= link_to public_user_path(user.id) do %><i class="fa-solid fa-user"></i><%= user.name %><% end %></span></strong>
-            </h5>
-            <p class="card-text">POST PLAYER <%= link_to "#{user.post_players.count}", public_user_path(user.id) %></p>
-            <div>Follow <%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %></div>
-            <div>Follower <%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %></div>
-            <div><%= link_to "Favorites", favorites_public_user_path(user.id), class: "btn btn-success" %></div>
+<div class="jscroll">
+  <div class="card-list-container">
+    <% @users.each do |user| %>
+      <div class="card w-50 mx-auto mt-4 shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3">
+              <h5 class="card-title">
+                <strong><span> <%= link_to public_user_path(user.id) do %><i class="fa-solid fa-user"></i><%= user.name %><% end %></span></strong>
+              </h5>
+            </div>
+            <div class="col-2">
+              <p class="card-text">POST PLAYER<i class="fa-solid fa-futbol"></i> <%= link_to "#{user.post_players.count}", public_user_path(user.id) %></p>
+            </div>
+            <div class="col-2">
+              Follow <%= link_to "#{user.followings.count}", public_user_followings_path(user.id) %>
+            </div>
+            <div class="col-2">
+              Follower <%= link_to "#{user.followers.count}", public_user_followers_path(user.id) %>
+            </div>
+            <div class="col-3">
+              <%= link_to "Favorites", favorites_public_user_path(user.id), class: "btn btn-success" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="mx-auto"><%= paginate @users %></div>
 </div>
-<div class="mx-auto"><%= paginate @users %></div>
+
+

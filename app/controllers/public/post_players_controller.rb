@@ -34,6 +34,7 @@ class Public::PostPlayersController < ApplicationController
 
   def show
     @post_player=PostPlayer.find(params[:id])
+    @cart_player=CartPlayer.new
     @comment=Comment.new
   end
 

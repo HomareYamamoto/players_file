@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :post_players, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :cart_players#ベストイレブン機能
   has_many :notifications, dependent: :destroy # 通知機能追記
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy

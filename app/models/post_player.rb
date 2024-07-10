@@ -2,6 +2,7 @@ class PostPlayer < ApplicationRecord
 
   belongs_to :user
   belongs_to :nationality
+  has_many :cart_players #ベストイレブン機能
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy #追記

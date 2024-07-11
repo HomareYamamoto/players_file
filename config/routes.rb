@@ -43,6 +43,12 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
+    resources :cart_players,  only: [:index,:create,:update,:destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+
   end
 
 

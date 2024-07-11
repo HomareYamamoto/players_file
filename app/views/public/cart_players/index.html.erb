@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h1><strong>BEST 11</strong></h1>
+  </div>
+</div>
+<div class="container">
+  <div class="card-deck">
+      <% @cart_players.each do |cart_player| %>
+      <div class="card w-25  mx-5 shadow-lg">
+        <div class="card-header">
+          <%= cart_player.post_player.name %> <%= link_to "削除", public_cart_player_path(cart_player), method: :delete , "data-confirm" => "ベストイレブンから削除しますか？" , class: "btn btn-danger" %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= cart_player.post_player.nationality.name %></li>
+        </ul>
+      </div>
+      <% end %>
+  </div>
+</div>

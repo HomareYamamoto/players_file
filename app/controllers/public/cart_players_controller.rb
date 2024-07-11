@@ -5,8 +5,8 @@ class Public::CartPlayersController < ApplicationController
     @cart_player = CartPlayer.new(cart_player_params)
     @cart_player.user_id = current_user.id
     @cart_player.post_player_id = cart_player_params[:post_player_id]
-    @cart_item.save
-    redirect_to public_cart_items_path
+    @cart_player.save
+    redirect_to public_cart_players_path
   end
 
 
@@ -15,6 +15,22 @@ class Public::CartPlayersController < ApplicationController
     @cart_players=current_user.cart_players
   end
 
+  def update
+    cart_player = CartPlayer.find(params[:id])
+    cart_player.update(cart_player_params)
+    redirect_to public_cart_players_path
+  end
+
+  def destroy
+    @cart_player = CartPlayer.find(params[:id])
+    @cart_player.destroy
+    redirect_to public_cart_players_path
+  end
+
+  def destroy_all
+    CartPlayer.destroy_all
+    redirect_to public_cart_players_path
+  end
 
   private
   def cart_player_params

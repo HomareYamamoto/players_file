@@ -28,6 +28,10 @@
           <th><%= link_to "favorites", favorites_public_user_path(@user.id) %></th>
           <th></th>
         </tr>
+        <tr>
+          <th><%= link_to "BEST 11", public_cart_players_path(@user.id) %></th>
+          <th></th>
+        </tr>
       </table>
       <div>
         <%= link_to "Profile edit", edit_public_user_path(@user.id), class: 'btn btn-success' %>

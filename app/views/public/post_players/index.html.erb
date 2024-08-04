@@ -55,9 +55,14 @@
   </div>
   <div class="offset-6"><%= paginate @post_players %></div>
 </div>
+<div class ="scroll-top-btn">
+  <a href="#">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+</div>
 <!--以下-->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/script.js"></script>
+  <script src="packs/public/post_players/jquery.min.js"></script>
+  <script src="packs/public/post_players/script.js"></script>
 <!--以下無限スクロール記述-->
   <script>
     $(document).on('turbolinks:load', function() {

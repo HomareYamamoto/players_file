@@ -1,10 +1,9 @@
-#back {
+@charset "UTF-8";
+
+.scroll-top-btn {
   position: fixed;
   right: 20px;
   bottom: 20px;
-}
-
-.back-img {
   width: 50px;
   hover:none;
 }

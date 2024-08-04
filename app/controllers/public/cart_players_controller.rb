@@ -34,6 +34,6 @@ class Public::CartPlayersController < ApplicationController
 
   private
   def cart_player_params
-      params.require(:cart_player).permit(:user_id, :post_player_id)
+      params.require(:cart_player).permit(:user_id, :post_player_id, :position)
   end
 end

@@ -10,7 +10,8 @@
         <%= cart_player.post_player.name %> <%= link_to "削除", public_cart_player_path(cart_player), method: :delete , "data-confirm" => "ベストイレブンから削除しますか？" , class: "btn btn-danger" %>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= cart_player.post_player.nationality.name %></li>
+        <li class="list-group-item"><%= cart_player.post_player.nationality.name %>代表</li>
+        <li class="list-group-item">ポジション：<%= cart_player.position %></li>
       </ul>
     </div>
   <% end %>

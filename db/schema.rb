@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2024_07_09_071527) do
   create_table "cart_players", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_player_id", null: false
+    t.string "position", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

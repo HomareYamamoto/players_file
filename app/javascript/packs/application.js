@@ -13,8 +13,19 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import 'jscroll';
-
+import '../stylesheets/public/post_players/index.css';
+import '../packs/public/post_players/script.js';
+import '../packs/public/post_players/jquery.min.js';
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+// $(function() {
+//   $('scroll-top-btn a').on('click',function(event){
+//     $('body, html').animate({
+//     }, 800);
+//     event.preventDefault();
+//   });
+// });

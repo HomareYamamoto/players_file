@@ -56,9 +56,16 @@
   <div class="offset-6"><%= paginate @post_players %></div>
 </div>
 
-<span id ="scroll-top-btn"> <!--divタグだと上部へのスクロール機能が機能しなかった。機能自体は遷移後すぐに使えず投稿一覧ページをリロードすると使用可能-->
+<span id ="scroll-top-btn">
   <a href="#">
     <i class="fa-solid fa-arrow-up"></i>
+  </a>
+</span>
+<!--turbolinks無効化済み-->
+
+<span id ="page-reload-btn">
+  <a href="#">
+    <i class="fa-solid fa-arrow-rotate-right"></i>
   </a>
 </span>
 

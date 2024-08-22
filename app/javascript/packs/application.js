@@ -13,9 +13,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import 'jscroll';
-// import '../stylesheets/public/post_players/index.css';
 import 'script.js';
-// import '../packs/public/post_players/jquery.min.js';
+import 'jquery.min.js';
 
 Rails.start()
 Turbolinks.start()

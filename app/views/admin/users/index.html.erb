@@ -15,6 +15,7 @@
           <th>Post PLAYERS</th>
           <th>Follows</th>
           <th>Followers</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +26,11 @@
             <!--フォロー機能実装時に下記追加-->
             <td><%= link_to "#{user.followings.count}", admin_user_followings_path(user.id) %></td>
             <td><%= link_to "#{user.followers.count}", admin_user_followers_path(user.id) %></td>
+            <% if user.is_active? %>
+            <td class="text-success">Active</td>
+            <% else %>
+            <td class="text-muted">Retire</td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
